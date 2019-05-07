@@ -1,0 +1,9 @@
+api:提供服务器接口
+manage:饿了么后台管理系统
+    src:
+        store:数据仓库
+        filters:过滤器
+        components:组件
+        routers:路由
+        bus: 公共实例
+site:前台展示。

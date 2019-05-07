@@ -1,0 +1,82 @@
+1、店铺类别（shopTypeList）
+    _id:唯一标识  店铺类别的Id
+    shopTypeName:店铺类别名称
+    shopTypePic:店铺类别图片
+    addTime:添加时间、
+2、店铺（shopList)
+        _id:唯一标识
+        shopName:店铺的名字
+        shopPic:店铺的图片
+        shopTypeId:店铺类别ID
+        shopTypeName:店铺的名称
+        addTime:添加时间
+        shopaddress:店铺地址
+        ContactNumber:联系电话
+        BusinessHours:营业时间
+
+    类别:
+    //1代表美食 Deliciou_food
+    //1.0 全部  1.1小吃炸串  1.2简餐便当  1.4地方菜系 1.5汉堡披萨 1.6香菇冒菜
+    //2快餐便当 Fast_food_lunch
+    // 1.0 全部  1.1其他快餐  1.2盖浇饭  1.4汉堡薯条 1.5黄焖鸡米饭 1.6麻辣烫
+    //3.特色菜系  Characteristic_Cuisine
+    // 1.0 全部  1.1其他西餐  1.2披萨  1.4刺身寿司
+    //4.异国料理  Exotic_cuisine
+    // 1.0 全部  1.1小吃炸串  1.2简餐便当  1.4地方菜系 1.5汉堡披萨 1.6香菇冒菜
+    //5.异国料理  Snack_night_snack
+    // 1.0 全部  1.1其他小吃  1.2炸鸡炸串  1.4小龙虾 1.5烧烤 1.6花甲
+    //6.甜品饮品  Dessert_drinks
+    // 1.0 全部  1.1奶茶果汁  1.2面包蛋糕  1.4甜品 1.5咖啡
+    5.店铺活动:(shopactivity)
+     shopId:店铺ID
+6.店铺评价:(shopevaluate)
+    shopId:店铺ID
+    全部评价:wholeEvaluate
+    好评Praise
+    差评NegativeComment
+7.申请店铺:addshop
+    shopid:店铺id
+    shopname: "", //店铺的名称
+    textarea: "", //店铺描述
+    telephone: "", //联系电话
+    address: "", //店铺地址
+    ID_card_no: "", //身份证号码
+    full_name: "", //姓名
+    ID_carimg:"",身份证照片
+    Business_license_img:""营业执照图片
+
+
+
+
+
+
+
+3、商品类别（goodsTypeId)
+    _id:商品类别ID
+    shopId:店铺ID
+    goodsTypeName:商品类别名称
+    addTime:添加时间
+4、商品信息（goodsList）
+    _id:商品标识
+    goodsName:商品名称
+    goodsTypeId:商品类别ID
+    goodsPrice:商品的价格
+    goodsTypeName:商品类别的名称
+    shopId:店铺ID
+    shopName:店铺名称
+
+
+
+
+
+
+5、管理员信息（adminList）
+    _id:标识
+    adminName:管理员的名字
+    passWord:密码
+    time:添加时间
+6、管理员登陆日志信息表
+    _id:标识
+    adminName:管理员的名字
+    addTime:管理员登陆的时间
+

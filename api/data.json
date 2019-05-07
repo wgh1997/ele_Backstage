@@ -1,0 +1,10 @@
+{
+    "shopName": "店铺名字",
+    "shopPic": "店铺的图片",
+    "shopTypeId": "店铺类别ID",
+    "shopTypeName": "店铺的名称",
+    "addTime": "添加时间",
+    "shopaddress": "店铺地址",
+    "ContactNumber": "联系电话",
+    "BusinessHours": "营业时间"
+}
