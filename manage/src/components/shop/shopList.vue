@@ -181,7 +181,7 @@
             console.log(data)
           })
         }
-        if (this.active === 2) {
+        if (this.active == 2) {
           this.$refs.userName.innerHTML = "提交";
         }
 
