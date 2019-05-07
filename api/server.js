@@ -5,6 +5,7 @@ const jwt = require("./module/jwt");
 const tool = require("./module/tool");
 const {upPic} = require("./module/upPic")
 const app = express();
+app.use(express.static(__dirname+"/upPic"));
 app.use(bodyParser.json());
 app.all("*",function (req,res,next) {
     res.header("Access-Control-Allow-Origin","*");

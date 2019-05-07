@@ -43,10 +43,26 @@
             <el-form-item label="联系电话" prop="ContactNumber">
                 <el-input v-model="ruleForm.ContactNumber"></el-input>
             </el-form-item>
-            <el-form-item label="营业时间" prop="BusinessHours">
-                <el-input v-model="ruleForm.BusinessHours"></el-input>
+            <el-form-item label="营业时间" prop="BusinessHours" style="margin: 0 0 0 0">
+                <el-time-select
+                placeholder="起始时间"
+                v-model="ruleForm.startTime"
+                :picker-options="{
+                  start: '08:30',
+                  step: '00:15',
+                  end: '18:30'
+                }">
+              </el-time-select>
+              <el-time-select
+                placeholder="结束时间"
+                v-model="ruleForm.endTime"
+                :picker-options="{
+                  start: '08:30',
+                  step: '00:15',
+                  end: '18:30',
+                }">
+              </el-time-select>
             </el-form-item>
-           
     </el-form>
     <div slot="footer" class="dialog-footer">
         <el-button @click="$emit('update:visible',false)">取 消</el-button>
@@ -61,10 +77,11 @@ export default {
     props:["visible","bbs"],
     data() {
         return {
+            pageIndex:"1",
             imageUrl: '',
             details:[],
             img:'',
-            ruleForm: {value: '',label: '',myVal:[],shopName:'',shopaddress: '',ContactNumber: '',BusinessHours:"" , id:"",img:''
+            ruleForm: {value: '',label: '',myVal:[],shopName:'',shopaddress: '',ContactNumber: '',BusinessHours:"" , id:"",img:'',startTime:"",endTime:"",
             },
             rules: {
                 shopName: [
@@ -84,11 +101,12 @@ export default {
                 ContactNumber: [
                 { required: true, message: '请输入正确的手机号', trigger: 'change'}
                 ],
-                BusinessHours: [
-                { required: true, message: '请输入营业时间', trigger: 'blur'},
-                ],
+                // BusinessHours: [
+                // { required: true, message: '请输入营业时间', trigger: 'blur'},
+                // ],
             },
             options:[{value: 1,label: "美食"},{value: 2,label: "快餐便当"},{value: 3,label: "特色菜系"},{value: 4,label: "异国料理"},{value: 5,label: "异国料理"},{value: 6,label: "甜品饮品"}],
+            value4: [new Date(2019, 9, 10, 8, 40), new Date(2019, 9, 10, 9, 40)],
         }
     },
     methods:{
@@ -134,12 +152,15 @@ export default {
          this.$refs[ruleForm].validate((valid) => {
           if (valid) {
             this.$emit('update:visible',false)
-            this.$store.dispatch("store_nformation")
+            this.$store.dispatch("store_nformation",this.pageIndex)
             this.$store.dispatch("modifyb",this.ruleForm)
           } else {
             alert("请正确输入格式")
           }
         });
+       },
+       nns(){
+            console.log(1111)
        }
  
     },
@@ -149,10 +170,10 @@ export default {
         var content =arr.find((value,index,arr)=>{
            if(value._id==this.bbs){
              console.log(value.shopTypeId)
-           //  this.imageUrl = require("../../../../api/upPic/"+value.shopPic)
+              //  this.imageUrl = require("../../../../api/upPic/+value.shopPic")
                this.ruleForm.id=this.bbs
                 this.ruleForm.value  = value.shopTypeId/1;
-                this.ruleForm.myVal=[]//这个是类别
+                //this.ruleForm.myVal=[]//这个是类别
                 //this.details=value.shopTypeName
                 console.log(value)
                 this.ruleForm.shopName=value.shopName//店铺名称
@@ -205,5 +226,8 @@ export default {
     width: 100px;
     height: 100px;
     display: block;
+  }
+  .dialog-footer{
+      margin:  35px 5px 1px 233px;
   }
 </style>

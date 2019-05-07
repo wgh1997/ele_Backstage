@@ -39,13 +39,14 @@
       </el-table-column>
     </el-table>
     <div class="toolbar">
-      <el-pagination
+        <pagelnfo actionsName="getAdminLog"></pagelnfo>
+      <!-- <el-pagination
         background
         layout="prev, pager, next"
         :current-page="$store.state.page.pageIndex"
         :page-count="$store.state.page.pageSum"
         @current-change="v=>this.$store.dispatch('getAdminLog',{pageIndex:v})"
-      ></el-pagination>
+      ></el-pagination> -->
     </div>
   </div>
 </template>

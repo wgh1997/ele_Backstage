@@ -8,7 +8,9 @@ import Login from './views/Login.vue'
 import axios from "axios";
 Vue.prototype.$axios = axios;
 import filters from "./filter";
+import components from "./components/index"
 Vue.use(ElementUI)
+Vue.use(components)
 Vue.config.productionTip = false
 //这个是路由发送的时候拦截,//看看他里面有没有meta.isAuthorization: true是不是的与true如果等于true的话判断他loccalstorage是不是有,令牌如果有的话,那么就直接退出,有的话继续发送请求
 router.beforeEach((to,from,next)=>{

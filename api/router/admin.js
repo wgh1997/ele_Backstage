@@ -4,6 +4,7 @@ const db = require("../module/db2");
 const jwt = require("../module/jwt");
 const tool = require("../module/tool");
 const {upPic} = require("../module/upPic")
+const common = require("../module/common")
 const app = express();
 app.use(bodyParser.json());
 app.all("*",function (req,res,next) {
@@ -53,16 +54,18 @@ module.exports.addshop = function(req,res){
 }
 //获取店铺信息
 module.exports.information = function(req,res){
-    db.find("shopList",{
-        sortObj:{
-            addTime:-1,
-        }
-    },function(err,result){
-        res.json({
-            ok:1,
-            result
-        })
-    })
+    console.log(111111)
+    common.getInfoList("shopList",req,res)
+    // db.find("shopList",{
+    //     sortObj:{
+    //         addTime:-1,
+    //     }
+    // },function(err,result){
+    //     res.json({
+    //         ok:1,
+    //         result
+    //     })
+    // })
 }
 //修改店铺信息
 module.exports.modify  = function(req,res){

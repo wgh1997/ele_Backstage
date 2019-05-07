@@ -19,8 +19,7 @@
     </el-table-column>
     <el-table-column prop="shopPic" label="店铺图片" width="120">
       <template slot-scope="scope">
-            <img :src="'../../../../api/upPic/'+scope.row.shopPic"  style="width:100px; height:100px">
-            
+            <img :src="'http://127.0.0.1/'+scope.row.shopPic"  style="width:100px; height:100px">
       </template>
     </el-table-column>
     <el-table-column prop="shopTypeId" label="店铺类别ID" width="120"> 
@@ -78,8 +77,9 @@
         <applyedit :visible.sync="dialogFormVisible" :bbs="id"></applyedit>
     </el-dialog>
 </div>
+  <pagelnfo actionsName="store_nformation"></pagelnfo>
 </div>
-</template>
+</template> 
 
 <script>
 import applyedit from "./applyedit";
@@ -90,13 +90,14 @@ import applyedit from "./applyedit";
         dialogTableVisible: false,
         dialogFormVisible: false,
         imageUrl:'',
+        pageIndex:"1"
       }
     },
     components:{
         applyedit
     },
     mounted() {
-      this.$store.dispatch("store_nformation")
+      this.$store.dispatch("store_nformation",this.pageIndex)
       this.imageUrl = require("../../../../api/upPic/1557059432314.jpg")
     },
     methods:{
@@ -111,7 +112,7 @@ import applyedit from "./applyedit";
        }).then(({data})=>{
          console.log(data)
          if(data.ok===1){
-             this.$store.dispatch("store_nformation")
+             this.$store.dispatch("store_nformation",this.pageIndex)
          }
        })
       },

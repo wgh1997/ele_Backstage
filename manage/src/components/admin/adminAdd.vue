@@ -18,15 +18,6 @@
                  
             </el-table-column>
         </el-table>
-        <div class="toolbar">
-                <el-pagination
-                  background
-                  layout="prev, pager, next"
-                  :current-page= pageIndex
-                  :page-count=pageSum
-                  @daindi="fn"
-                ></el-pagination>
-              </div>
     </div>
 </template>
 <script>
@@ -53,9 +44,7 @@
             })
         },
         methods: {
-            fn(){
-                console.log(1)
-            }
+            
         },
     }
 </script>

@@ -4,6 +4,7 @@ const db = require("../module/db2");
 const jwt = require("../module/jwt");
 const tool = require("../module/tool");
 const {upPic} = require("../module/upPic")
+const common = require("../module/common")
 const app = express();
 app.use(bodyParser.json());
 app.all("*",function (req,res,next) {
@@ -45,47 +46,48 @@ module.exports.login = function (req,res) {
   }
   //登录日志
   module.exports.adminLoga = function (req,res) {
+    common.getInfoList("adminLog",req,res)
     //   console.log(req.query.pageIndex)
-       var whereObj={}
-    //   console.log(req.headers.authorization);//这个是获取的令牌里面的所有的值
-       var token = jwt.deToken(req.headers.authorization)
-     //  console.log(jwt.deToken(req.headers.authorization))
-       if(token.ok===1){
-        //   console.log(whereObj)
-           var pageIndex = req.query.pageIndex/1;
-           db.count("adminLog",whereObj,function (count) {
-               var pageSize = 7;
-               var pageSum = Math.ceil(count/pageSize) ;
-               if(pageSum<0)
-                   pageSum =1;
-               if(pageIndex > pageSum)
-                   pageIndex = pageSum;
-               if(pageIndex < 0)
-                   pageIndex = 1;
-               db.find("adminLog",{
-                   whereObj,
-                   skipNum:(pageIndex-1)*pageSize,
-                   limitNum:pageSize,
-                   sortObj:{
-                       addTime:-1
-                   }
-               },function (err,adminLog) {
-                   res.json(
-                       {
-                           ok:1,
-                           adminLog,
-                           pageIndex,
-                           pageSum
-                       }
-                   )
-               })
-           })
-       }else{
-           res.json({
-               ok:-2,// 1 成功，-1 一般性的错误 ，-2 token 无权访问
-               msg:"您没有权限访问该地址"
-           })
-       }
+    //    var whereObj={}
+    // //   console.log(req.headers.authorization);//这个是获取的令牌里面的所有的值
+    //    var token = jwt.deToken(req.headers.authorization)
+    //  //  console.log(jwt.deToken(req.headers.authorization))
+    //    if(token.ok===1){
+    //     //   console.log(whereObj)
+    //        var pageIndex = req.query.pageIndex/1;
+    //        db.count("adminLog",whereObj,function (count) {
+    //            var pageSize = 7;
+    //            var pageSum = Math.ceil(count/pageSize) ;
+    //            if(pageSum<0)
+    //                pageSum =1;
+    //            if(pageIndex > pageSum)
+    //                pageIndex = pageSum;
+    //            if(pageIndex < 0)
+    //                pageIndex = 1;
+    //            db.find("adminLog",{
+    //                whereObj,
+    //                skipNum:(pageIndex-1)*pageSize,
+    //                limitNum:pageSize,
+    //                sortObj:{
+    //                    addTime:-1
+    //                }
+    //            },function (err,adminLog) {
+    //                res.json(
+    //                    {
+    //                        ok:1,
+    //                        adminLog,
+    //                        pageIndex,
+    //                        pageSum
+    //                    }
+    //                )
+    //            })
+    //        })
+    //    }else{
+    //        res.json({
+    //            ok:-2,// 1 成功，-1 一般性的错误 ，-2 token 无权访问
+    //            msg:"您没有权限访问该地址"
+    //        })
+    //    }
    }
    //删除
    module.exports.deletee  =function(req,res){
@@ -125,45 +127,5 @@ module.exports.adminLog = function(req,res){
   }
   //获取管理员
   module.exports.adminAdd =function (req,res) {
-    // console.log(req.query.pageIndex)
-    var whereObj={}
-  //  console.log(req.headers.authorization);//这个是获取的令牌里面的所有的值
-    var token = jwt.deToken(req.headers.authorization)
-   // console.log(jwt.deToken(req.headers.authorization))
-    if(token.ok===1){
-     //   console.log(whereObj)
-        var pageIndex = req.query.pageIndex/1;
-        db.count("adminList",whereObj,function (count) {
-            var pageSize = 7;
-            var pageSum = Math.ceil(count/pageSize) ;
-            if(pageSum<0)
-                pageSum =1;
-            if(pageIndex > pageSum)
-                pageIndex = pageSum;
-            if(pageIndex < 0)
-                pageIndex = 1;
-            db.find("adminList",{
-                whereObj,
-                skipNum:(pageIndex-1)*pageSize,
-                limitNum:pageSize,
-                sortObj:{
-                    addTime:-1
-                }
-            },function (err,adminList) {
-                res.json(
-                    {
-                        ok:1,
-                        adminList,
-                        pageIndex,
-                        pageSum
-                    }
-                )
-            })
-        })
-    }else{
-        res.json({
-            ok:-2,// 1 成功，-1 一般性的错误 ，-2 token 无权访问
-            msg:"您没有权限访问该地址"
-        })
-    }
+    common.getInfoList("adminList",req,res)
 }
