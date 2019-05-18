@@ -54,18 +54,7 @@ module.exports.addshop = function(req,res){
 }
 //获取店铺信息
 module.exports.information = function(req,res){
-    console.log(111111)
     common.getInfoList("shopList",req,res)
-    // db.find("shopList",{
-    //     sortObj:{
-    //         addTime:-1,
-    //     }
-    // },function(err,result){
-    //     res.json({
-    //         ok:1,
-    //         result
-    //     })
-    // })
 }
 //修改店铺信息
 module.exports.modify  = function(req,res){
@@ -116,4 +105,28 @@ module.exports.delete_shop = function(req,res){
             })
         }
     })
+}
+//店铺类别
+module.exports.shopTypeList = function(req,res){
+    console.log("我要存储")
+    db.insertOne("shopTypeList",{
+        shopTypeName:req.body.shopTypeName,
+        shopTypePic:req.body.shopTypePic,
+        addTime:Date.now()
+    },function(err,results){
+        if(err){
+            console.log("失败")
+        }else{
+
+            res.json({
+                ok:1, 
+                results
+            })
+        }
+    })
+  }
+  //获取店铺类别信息
+  module.exports.get_laibian = function(req,res){
+    console.log("我在哪里")
+    common.getInfoList("shopTypeList",req,res)
 }

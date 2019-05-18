@@ -170,7 +170,7 @@ export default {
         var content =arr.find((value,index,arr)=>{
            if(value._id==this.bbs){
              console.log(value.shopTypeId)
-              //  this.imageUrl = require("../../../../api/upPic/+value.shopPic")
+              //this.imageUrl = require("../../../../api/upPic/+value.shopPic")
                this.ruleForm.id=this.bbs
                 this.ruleForm.value  = value.shopTypeId/1;
                 //this.ruleForm.myVal=[]//这个是类别

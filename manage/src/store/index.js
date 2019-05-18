@@ -20,7 +20,7 @@ export default new Vuex.Store({
     mutations:{
         //这个是修改页码的数量
         SET_ADMIN_LOG(state,data){
-            console.log(111111)
+            console.log(data)
             state.page.pageIndex=data.pageIndex,
             state.page.pageSum=data.pageSum
         }

@@ -60,7 +60,7 @@
           width: '100%',
           height: this.mapHeight + 'px'
         },
-        center: {lng: 116.404, lat: 39.915},
+        center: {lng: 113.286583, lat: 35.219486},
         zoom: 100,//这个是设置比例的
       }
     },
@@ -93,10 +93,12 @@
         this.center.lat = e.point.lat
       },
       syncCenterAndZoom (e) {
+       
         const {lng, lat} = e.target.getCenter()
         this.center.lng = lng
         this.center.lat = lat
         this.zoom = e.target.getZoom()
+         console.log(lng,lat)
       },
       /***
       //  * 确认

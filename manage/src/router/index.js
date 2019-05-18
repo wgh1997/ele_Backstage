@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import admin from "@/router/admin";
 import shop from "./shop"
-import mop from "../components/mop.vue"
+import mop from "../components/mop.vue";
+import commodity from "./commodity"
 Vue.use(Router)
 
 export default new Router({
@@ -27,5 +28,5 @@ export default new Router({
         return import('@/views/About.vue')
       }
     }
-  ].concat(admin,shop)
+  ].concat(admin,shop,commodity)
 })

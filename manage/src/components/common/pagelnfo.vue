@@ -18,6 +18,7 @@
         props:["actionsName","params"],
         methods:{
             currentChange(pageIndex){
+                console.log(pageIndex)
                 var par = {
                     pageIndex
                 }

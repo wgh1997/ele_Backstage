@@ -13,7 +13,7 @@ module.exports.getInfoList=function(coll,req,res) {
     
     // const deInfo =  jwt.deToken(req.headers.authorization);
     // if(deInfo.ok === 1){
-        console.log(2222222222)
+        console.log(req.query.pageIndex,"我是当前页数")
     var pageIndex = req.query.pageIndex?req.query.pageIndex/1:1;
     db.count(coll,{},function (count) {
         // var config.PAGE_NUM = 8;
@@ -46,11 +46,4 @@ module.exports.getInfoList=function(coll,req,res) {
 
         })
     })
-    // }
-    // else{
-    //     res.json({
-    //         ok:-2,// 1 成功，-1 一般性的错误 ，-2 token 无权访问
-    //         msg:"您没有权限访问该地址"
-    //     })
-    // }
 }

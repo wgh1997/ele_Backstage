@@ -46,14 +46,20 @@
           </el-submenu>
            <el-submenu index="2">
             <template slot="title">
-              <i class="el-icon-setting"></i>
+              <i class="el-icon-goods"></i>
               <span slot="title">店铺管理</span>
             </template>
               <el-menu-item index="2-1" @click="$router.push('/shopList')">申请店铺</el-menu-item>
                <el-menu-item index="2-2" @click="$router.push('/Apply')">修改店铺</el-menu-item>
-              <el-menu-item index="2-3">店铺详情</el-menu-item>
-              <el-menu-item index="2-4" @click="$router.push('/shopTypeList')">添加店铺类别</el-menu-item>     
-              <el-menu-item index="2-5">店铺类别列表</el-menu-item>       
+              <el-menu-item index="2-4" @click="$router.push('/shopTypeList')">添加店铺类别</el-menu-item>               
+          </el-submenu>
+           <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-goods"></i>
+              <span slot="title">商品管理</span>
+            </template>
+              <el-menu-item index="3-1" @click="$router.push('/seecommodity')">商品列表</el-menu-item>
+               <el-menu-item index="3-2"  @click="$router.push('/getcommodity')">添加商品</el-menu-item>            
           </el-submenu>
         </el-menu>
       </el-aside>

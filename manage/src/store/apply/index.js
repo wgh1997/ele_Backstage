@@ -16,7 +16,7 @@ export default {
         }
     },
     //执行异步操作
-    actions:{
+    actions:{   
         //这个是获取
         store_nformation({commit},obj){
             console.log(111111111111)
@@ -30,7 +30,7 @@ export default {
                 console.log(data)
                 console.log(data.shopList)
                 commit("STOREINFORMATION",data.shopList)
-               commit("SET_ADMIN_LOG",data)
+                commit("SET_ADMIN_LOG",data)
             })
         },
         //这个是修改
@@ -46,7 +46,7 @@ export default {
             })
         },
        
-        
+        //
     },
     //计算属性
     getters:{
